@@ -1,4 +1,4 @@
-import time, itertools
+import time, itertools, os
 from dataset import ImageFolder
 from torchvision import transforms
 from torch.utils.data import DataLoader
@@ -44,7 +44,14 @@ class UGATIT(object) :
         self.img_size = args.img_size
         self.img_ch = args.img_ch
 
-        self.device = args.device
+        if args.device == 'tpu':
+            assert os.environ['COLAB_TPU_ADDR']
+            import torch_xla
+            import torch_xla.core.xla_model as xm
+            self.device = xm.xla_device()
+        else:
+            self.device = args.device
+
         self.benchmark_flag = args.benchmark_flag
         self.resume = args.resume
 

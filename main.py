@@ -32,7 +32,7 @@ def parse_args():
     parser.add_argument('--img_ch', type=int, default=3, help='The size of image channel')
 
     parser.add_argument('--result_dir', type=str, default='results', help='Directory name to save the results')
-    parser.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda'], help='Set gpu mode; [cpu, cuda]')
+    parser.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda', 'tpu'], help='Set gpu mode; [cpu, cuda, tpu]')
     parser.add_argument('--benchmark_flag', type=str2bool, default=False)
     parser.add_argument('--resume', type=str2bool, default=False)
 
